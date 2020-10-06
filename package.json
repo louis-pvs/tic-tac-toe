@@ -1,0 +1,19 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "A tic-tac-toe game created by JavaScript",
+  "main": "dist/index.js",
+  "repository": "https://github.com/louis-pvs/tic-tac-toe.git",
+  "author": "Louis Phang <design.vincent.louis@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --open --env.NODE_ENV=local"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
