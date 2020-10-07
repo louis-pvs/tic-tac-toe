@@ -20,5 +20,19 @@ module.exports = (env = { NODE_ENV: "production" }) => {
       filename: "[name].js",
       publicPath: "/",
     },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+          },
+        },
+      ],
+    },
+    resolve: {
+      extensions: [".js", ".jsx"],
+    },
   };
 };
