@@ -45,7 +45,7 @@ Below visualize the state when **`O`** won the game.
 Below visualize the sate when the game is tie.
 ```
 [
-  ['x', 'o', 'x'],
+  ['x', 'o', 'o'],
   ['o', 'x', 'x'],
   ['x', 'o', 'o']
 ]
