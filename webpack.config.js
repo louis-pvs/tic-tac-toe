@@ -1,8 +1,11 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const PATHS = {
   dist: path.resolve(__dirname, "dist"),
   contentBase: path.resolve(__dirname, "public"),
+  sass: path.resolve(__dirname, "src/sass"),
 };
 
 module.exports = (env = { NODE_ENV: "production" }) => {
@@ -23,6 +26,19 @@ module.exports = (env = { NODE_ENV: "production" }) => {
     module: {
       rules: [
         {
+          test: /\.s[ac]ss$/i,
+          use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader",
+            {
+              loader: "sass-loader",
+              options: {
+                implementation: require("sass"),
+              },
+            },
+          ],
+        },
+        {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
@@ -32,7 +48,20 @@ module.exports = (env = { NODE_ENV: "production" }) => {
       ],
     },
     resolve: {
+      alias: {
+        sass: PATHS.sass,
+      },
       extensions: [".js", ".jsx"],
     },
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: "Tic Tac Toe",
+        minify: !isDev,
+        template: path.join(PATHS.contentBase, "index.html"),
+      }),
+      new MiniCssExtractPlugin({
+        filename: "[name].css",
+      }),
+    ],
   };
 };

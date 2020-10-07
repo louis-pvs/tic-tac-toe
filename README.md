@@ -50,3 +50,12 @@ Below visualize the sate when the game is tie.
   ['x', 'o', 'o']
 ]
 ```
+
+## Project structure
+### Q: Why placing `.sass` in component folder instead of `/sass/**` folder?
+A: To control what styling is being compile into final bundle, by importing relative styling into component direct say for example:
+```JavaScript
+// in Demo.jsx
+import "Demo.scss";
+```
+Because `Demo.scss` is refrence by `Demo.jsx`, when `Demo.jsx` is removed from the project, styling within `Demo.scss` will be dismiss along with the reference file. (And ofcourse `Demo.scss` should only contains what's relate to `Demo.jsx`, component base approach.)

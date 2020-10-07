@@ -1,0 +1,12 @@
+@import "normalize.css";
+@import "sass/variables";
+
+html {
+  font-size: $base-font-size;
+  font-family: "Helvetica", sans-serif;
+}
+
+body {
+  font-size: 1rem;
+  font-family: inherit;
+}
