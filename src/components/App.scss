@@ -3,7 +3,7 @@
 
 html {
   font-size: $base-font-size;
-  color: #2d2d2d;
+  color: $default-black;
   font-family: "Helvetica", sans-serif;
 }
 
@@ -11,7 +11,7 @@ body {
   color: inherit;
   font-size: 1rem;
   font-family: inherit;
-  background-color: #eee;
+  background-color: $background-white;
 }
 
 .app {
@@ -24,13 +24,12 @@ body {
   font-size: 36px;
   line-height: 1;
 }
-.app__title-author {
-  font-size: 0.5em;
-  font-weight: 500;
-}
 .app__game-board {
-  background-color: #fff;
-  width: 600px;
+  background-color: $default-white;
+  width: 500px;
   max-width: 90%;
   margin: 0 auto;
+  box-shadow: 0 5px 5px $shadow-gray;
+  border-radius: 6px;
+  @extend %clearfix;
 }

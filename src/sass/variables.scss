@@ -1,3 +1,14 @@
 $base-font-size: 16px;
+$default-black: #343a40;
+$placeholder-gray: #e9ecef;
+$shadow-gray: #dee2e6;
+$default-white: #ffffff;
+$background-white: #f1f3f5;
+$circle-green: #40c057;
+$circle-green-darken: #2b8a3e;
+$cross-red: #fa5252;
+$cross-red-darken: #c92a2a;
+$animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
 
 @import "./mixins.scss";
+@import "./icon-font.scss";

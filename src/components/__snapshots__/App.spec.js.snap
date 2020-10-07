@@ -24,12 +24,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              1
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="00-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="00-o"
+                name="00-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="00-x"
+                name="00-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
         <div
@@ -38,12 +60,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              2
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="01-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="01-o"
+                name="01-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="01-x"
+                name="01-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
         <div
@@ -52,12 +96,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              3
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="02-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="02-o"
+                name="02-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="02-x"
+                name="02-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
       </div>
@@ -70,12 +136,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              1
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="10-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="10-o"
+                name="10-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="10-x"
+                name="10-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
         <div
@@ -84,12 +172,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              2
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="11-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="11-o"
+                name="11-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="11-x"
+                name="11-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
         <div
@@ -98,12 +208,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              3
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="12-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="12-o"
+                name="12-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="12-x"
+                name="12-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
       </div>
@@ -116,12 +248,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              1
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="20-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="20-o"
+                name="20-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="20-x"
+                name="20-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
         <div
@@ -130,12 +284,34 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              2
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="21-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="21-o"
+                name="21-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="21-x"
+                name="21-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
         <div
@@ -144,15 +320,43 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           <div
             className="gameboard__tile"
           >
-            <label
-              className="gameboard__label"
+            <fieldset
+              className="gameboard__fieldset"
             >
-              box 
-              3
-            </label>
+              <label
+                className="tile__label"
+                htmlFor="22-o"
+              >
+                <i
+                  className="tile__placeholder icon icon--circle"
+                />
+              </label>
+              <input
+                className="tile__radio-input"
+                id="22-o"
+                name="22-o"
+                onChange={[Function]}
+                type="radio"
+                value="o"
+              />
+              <input
+                className="tile__radio-input"
+                id="22-x"
+                name="22-x"
+                onChange={[Function]}
+                type="radio"
+                value="x"
+              />
+            </fieldset>
           </div>
         </div>
       </div>
+      <div
+        className="gameboard__horizontal-lines"
+      />
+      <div
+        className="gameboard__vertical-lines"
+      />
     </div>
   </div>
   <footer>
