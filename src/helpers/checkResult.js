@@ -4,7 +4,7 @@
  * @param {""} markToBeCheck
  * @returns If any row from the `board` has strike base on the `markingToBeCheck`
  */
-function rowStrike(board, markToBeCheck) {
+export function rowStrike(board, markToBeCheck) {
   for (let i = 0; i < 3; i++) {
     if (
       board[i][0] === markToBeCheck &&
@@ -23,7 +23,7 @@ function rowStrike(board, markToBeCheck) {
  * @param {""} markToBeCheck
  * @returns If any column from the `board` has strike base on the `markingToBeCheck`
  */
-function columnStrike(board, markToBeCheck) {
+export function columnStrike(board, markToBeCheck) {
   for (let i = 0; i < 3; i++) {
     if (
       board[0][i] === markToBeCheck &&
@@ -42,7 +42,7 @@ function columnStrike(board, markToBeCheck) {
  * @param {""} markToBeCheck
  * @returns If any diagonal direction from the `board` has strike base on the `markingToBeCheck`
  */
-function diagonalStrike(board, markToBeCheck) {
+export function diagonalStrike(board, markToBeCheck) {
   if (
     board[0][0] === markToBeCheck &&
     board[1][1] === markToBeCheck &&
@@ -64,17 +64,10 @@ function diagonalStrike(board, markToBeCheck) {
  * @param {""} markToBeCheck
  * @returns If any mark has strike in any direction from the board
  */
-function gameOver(board, markingToBeCheck) {
+export function gameOver(board, markingToBeCheck) {
   return (
     rowStrike(board, markingToBeCheck) ||
     columnStrike(board, markingToBeCheck) ||
     diagonalStrike(board, markingToBeCheck)
   );
 }
-
-module.exports = {
-  rowStrike,
-  columnStrike,
-  diagonalStrike,
-  gameOver,
-};
