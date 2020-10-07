@@ -1,12 +1,36 @@
 @import "normalize.css";
-@import "sass/variables";
+@import "sass/setup";
 
 html {
   font-size: $base-font-size;
+  color: #2d2d2d;
   font-family: "Helvetica", sans-serif;
 }
 
 body {
+  color: inherit;
   font-size: 1rem;
   font-family: inherit;
+  background-color: #eee;
+}
+
+.app {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+.app__title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+}
+.app__title-author {
+  font-size: 0.5em;
+  font-weight: 500;
+}
+.app__game-board {
+  background-color: #fff;
+  width: 600px;
+  max-width: 90%;
+  margin: 0 auto;
 }

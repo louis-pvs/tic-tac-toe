@@ -1,0 +1,28 @@
+@import "sass/setup";
+
+.gameboard,
+.gameboard__row {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  @extend %clearfix;
+}
+
+.gameboard__col {
+  float: left;
+  position: relative;
+  width: 33.3%;
+}
+
+.gameboard__tile {
+  float: left;
+  padding-top: 100%;
+  width: 100%;
+}
+.gameboard__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
