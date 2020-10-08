@@ -3,6 +3,7 @@ import "./GameBoard.scss";
 import cx from "classnames";
 import Tile from "../Tile";
 import Toggle from "../Toggle";
+import renderConfetti from "../../helpers/renderConfetti";
 import { getStrike } from "../../helpers/checkResult";
 
 const INITIAL_STATE = [
@@ -36,9 +37,9 @@ const GameBoard = () => {
     setStrikeIndex(getStrike(newResult, currentMark));
     setStepCount(stepCount + 1);
   };
+
   function renderStrikeLine() {
     if (!winner) return null;
-
     let top = "50%";
     let left = "50%";
     let transform = "translate(-50%, -50%)";
@@ -69,7 +70,7 @@ const GameBoard = () => {
       [`gameboard__strike-line--${winner}`]: !!winner,
     });
     const styles = { top, left, transform };
-
+    renderConfetti();
     return <div className={lineClassnames} style={styles}></div>;
   }
 
