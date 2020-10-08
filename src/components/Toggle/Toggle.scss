@@ -1,0 +1,74 @@
+@import "sass/setup";
+
+$toggle-size: 18px;
+
+.toggle {
+  float: left;
+  margin: 0.5rem;
+  position: relative;
+  text-align: left;
+  @extend %clearfix;
+}
+
+.toggle__knob-placeholder {
+  background-color: $circle-green;
+  border-radius: $toggle-size / 2;
+  display: inline-block;
+  position: relative;
+  width: $toggle-size * 2;
+  height: $toggle-size * 0.8;
+  vertical-align: middle;
+  transition: background-color 0.12s $animation-timing-function;
+  margin: 0.5rem;
+}
+.toggle__knob-placeholder--checked {
+  background-color: $cross-red;
+}
+
+.toggle__knob-placeholder--disabled {
+  background-color: $placeholder-gray-darken;
+}
+.toggle__label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.toggle__input {
+  @include a11y-visually-hidden();
+}
+.toggle__icon-placeholder {
+  font-size: 1.25rem;
+  vertical-align: middle;
+  transform: scale(1);
+  transition: font-size 0.12s $animation-timing-function;
+}
+.toggle__icon-placeholder--circle {
+  color: $circle-green;
+}
+.toggle__icon-placeholder--cross {
+  color: $cross-red;
+}
+.toggle__icon-placeholder--disabled {
+  color: $placeholder-gray-darken;
+}
+.toggle__icon-placeholder--selected {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.toggle__knob {
+  background-color: $default-white;
+  border-radius: $toggle-size / 2;
+  box-shadow: 0 2px 2px $shadow-gray;
+  display: inline-block;
+  height: $toggle-size;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: $toggle-size;
+  transition: left 0.12s $animation-timing-function;
+}
+.toggle__knob--checked {
+  left: $toggle-size;
+}

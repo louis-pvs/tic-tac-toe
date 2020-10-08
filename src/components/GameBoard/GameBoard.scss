@@ -1,5 +1,11 @@
 @import "sass/setup";
 
+.gameboard {
+  background-color: $default-white;
+  box-shadow: 0 5px 5px $shadow-gray;
+  border-radius: 6px;
+}
+
 .gameboard,
 .gameboard__row {
   float: left;

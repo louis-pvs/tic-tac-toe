@@ -5,7 +5,7 @@ import Tile from "./index";
 const CLASSNAMES = {
   label: "tile__label",
   radio: "tile__radio-input",
-  placeholder: "tile__placeholder"
+  placeholder: "tile__placeholder",
 };
 
 describe("<Tile />", () => {
@@ -39,21 +39,13 @@ describe("<Tile />", () => {
     expect(labelEl.getAttribute("for")).toBe(OId);
   });
   it("should select the correct input when user click on label", () => {
-    const { container } = render(<Tile id={id} target={target} />);
+    const { container } = render(
+      <Tile id={id} target={target} selectedValue="x" />
+    );
     const OInput = container.querySelector(`[id="${OId}"]`);
     const XInput = container.querySelector(`[id="${XId}"]`);
-    const labelEl = container.querySelector(`.${CLASSNAMES.label}`);
     expect(OInput.checked).toBeFalsy();
-    expect(XInput.checked).toBeFalsy();
-    fireEvent(
-      labelEl,
-      new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true,
-      })
-    );
-    expect(OInput.checked).toBeTruthy();
-    expect(XInput.checked).toBeFalsy();
+    expect(XInput.checked).toBeTruthy();
   });
   it("should trigger call back when input selected", () => {
     const mockCacllback = jest.fn();
@@ -62,13 +54,7 @@ describe("<Tile />", () => {
     );
     const labelEl = container.querySelector(`.${CLASSNAMES.label}`);
 
-    fireEvent(
-      labelEl,
-      new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true,
-      })
-    );
+    fireEvent(labelEl, new MouseEvent("click"));
 
     expect(mockCacllback).toHaveBeenCalledTimes(1);
   });
@@ -78,7 +64,11 @@ describe("<Tile />", () => {
     );
     const icon = container.querySelector(`.${CLASSNAMES.placeholder}`);
 
-    expect(icon.classList.contains("tile__placeholder--o-selected")).toBeFalsy();
-    expect(icon.classList.contains("tile__placeholder--x-selected")).toBeTruthy();
-  })
+    expect(
+      icon.classList.contains("tile__placeholder--o-selected")
+    ).toBeFalsy();
+    expect(
+      icon.classList.contains("tile__placeholder--x-selected")
+    ).toBeTruthy();
+  });
 });

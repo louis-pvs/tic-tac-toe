@@ -40,9 +40,6 @@
   transition-property: color, text-shadow;
   transition-duration: 0.12s;
   transition-timing-function: $animation-timing-function;
-  text-shadow: 0 1px $shadow-gray, 0 2px $shadow-gray, 0 3px $shadow-gray,
-    0 4px $shadow-gray, 0 5px $shadow-gray, 0 6px $shadow-gray,
-    0 7px $shadow-gray, 0 8px $shadow-gray;
 }
 
 .tile__placeholder--o-selected {
@@ -51,7 +48,7 @@
   text-shadow: 0 1px $circle-green-darken, 0 2px $circle-green-darken,
     0 3px $circle-green-darken, 0 4px $circle-green-darken,
     0 5px $circle-green-darken, 0 6px $circle-green-darken,
-    0 7px $circle-green-darken, 0 8px $circle-green-darken;
+    0 7px $circle-green-darken, 0 8px $circle-green-darken, 0 20px $shadow-gray;
 }
 
 .tile__placeholder--x-selected {
@@ -59,5 +56,6 @@
   color: $cross-red;
   text-shadow: 0 1px $cross-red-darken, 0 2px $cross-red-darken,
     0 3px $cross-red-darken, 0 4px $cross-red-darken, 0 5px $cross-red-darken,
-    0 6px $cross-red-darken, 0 7px $cross-red-darken, 0 8px $cross-red-darken;
+    0 6px $cross-red-darken, 0 7px $cross-red-darken, 0 8px $cross-red-darken,
+    0 20px $shadow-gray;
 }

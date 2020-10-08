@@ -9,8 +9,8 @@ const Tile = ({ selectedValue, target, id, onTileChecked }) => {
   };
   const labelClassName = cx({
     tile__label: true,
-    'tile__label--dirty': !!selectedValue
-  })
+    "tile__label--dirty": !!selectedValue,
+  });
   const placeholderClassName = cx({
     tile__placeholder: true,
     "tile__placeholder--selected": !!selectedValue,
@@ -25,22 +25,21 @@ const Tile = ({ selectedValue, target, id, onTileChecked }) => {
       <label className={labelClassName} htmlFor={`${id}-${target}`}>
         <i className={placeholderClassName}></i>
       </label>
-      <input
-        id={`${id}-o`}
-        className="tile__radio-input"
-        type="radio"
-        value="o"
-        name={`${id}-o`}
-        onChange={handleOnChange}
-      />
-      <input
-        id={`${id}-x`}
-        className="tile__radio-input"
-        type="radio"
-        value="x"
-        name={`${id}-x`}
-        onChange={handleOnChange}
-      />
+      {["o", "x"].map((mark) => {
+        return (
+          <input
+            key={mark}
+            id={`${id}-${mark}`}
+            className="tile__radio-input"
+            type="radio"
+            value={mark}
+            name={`${id}-${mark}`}
+            checked={selectedValue === mark}
+            onChange={handleOnChange}
+            disabled={!!selectedValue}
+          />
+        );
+      })}
     </>
   );
 };

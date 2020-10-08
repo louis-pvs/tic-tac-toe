@@ -25,11 +25,8 @@ body {
   line-height: 1;
 }
 .app__game-board {
-  background-color: $default-white;
   width: 500px;
   max-width: 90%;
   margin: 0 auto;
-  box-shadow: 0 5px 5px $shadow-gray;
-  border-radius: 6px;
   @extend %clearfix;
 }
