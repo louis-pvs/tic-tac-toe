@@ -16,41 +16,56 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
       className="gameboard__controller"
     >
       <div
-        className="toggle"
+        className="gameboard__controller-col gameboard__controller-col--left"
       >
-        <span
-          className="toggle__label"
-        >
-          First Move
-        </span>
-        <br />
-        <i
-          className="icon icon--circle toggle__icon-placeholder toggle__icon-placeholder--selected toggle__icon-placeholder--circle"
-        />
-        <label
-          className="toggle__knob-placeholder"
+        <div
+          className="toggle"
         >
           <span
-            className="toggle__knob"
+            className="toggle__label"
+          >
+            First Move
+          </span>
+          <br />
+          <i
+            className="icon icon--circle toggle__icon-placeholder toggle__icon-placeholder--selected toggle__icon-placeholder--circle"
           />
-          <input
-            checked={false}
-            className="toggle__input"
-            disabled={false}
-            onChange={[Function]}
-            type="checkbox"
+          <label
+            className="toggle__knob-placeholder"
+          >
+            <span
+              className="toggle__knob"
+            />
+            <input
+              checked={false}
+              className="toggle__input"
+              disabled={false}
+              onChange={[Function]}
+              type="checkbox"
+            />
+          </label>
+          <i
+            className="icon icon--cross toggle__icon-placeholder toggle__icon-placeholder--cross"
           />
-        </label>
-        <i
-          className="icon icon--cross toggle__icon-placeholder toggle__icon-placeholder--cross"
-        />
+        </div>
       </div>
-      <button
-        className="gameboard__controller"
-        onClick={[Function]}
+      <div
+        className="gameboard__controller-col gameboard__controller-col--right"
       >
-        reset
-      </button>
+        <button
+          className="gameboard__btn"
+          onClick={[Function]}
+        >
+          <i
+            className="icon icon--redo gameboard__icon"
+          />
+          <span
+            className="gameboard__btn-span"
+          >
+            Restart
+          </span>
+        </button>
+      </div>
     </div>
     <div
       className="gameboard"

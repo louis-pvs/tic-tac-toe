@@ -30,14 +30,23 @@ const GameBoard = () => {
   return (
     <>
       <div className="gameboard__controller">
-        <Toggle
-          onToggleChanged={setFirstPlayer}
-          checked={firstPlayer === "x"}
-          disabled={stepCount > 0}
-        />
-        <button className="gameboard__controller" onClick={handleResetClick}>
-          reset
-        </button>
+        <div className="gameboard__controller-col gameboard__controller-col--left">
+          <Toggle
+            onToggleChanged={setFirstPlayer}
+            checked={firstPlayer === "x"}
+            disabled={stepCount > 0}
+          />
+        </div>
+        <div className="gameboard__controller-col gameboard__controller-col--right">
+          <button
+            className="gameboard__btn"
+            onClick={handleResetClick}
+            disabled={!stepCount}
+          >
+            <i className="icon icon--redo gameboard__icon" />
+            <span className="gameboard__btn-span">Restart</span>
+          </button>
+        </div>
       </div>
       <div className="gameboard">
         {result.map((row, rowIndex) => {

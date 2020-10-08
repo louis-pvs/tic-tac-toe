@@ -8,6 +8,10 @@ const Toggle = ({ onToggleChanged, checked, disabled }) => {
     if (target.checked) onToggleChanged("x");
     else onToggleChanged("o");
   };
+  const toggleClassname = cx({
+    toggle: true,
+    "toggle--disabled": disabled,
+  });
   const knobClassnames = cx({
     toggle__knob: true,
     "toggle__knob--checked": checked,
@@ -34,11 +38,10 @@ const Toggle = ({ onToggleChanged, checked, disabled }) => {
     "toggle__icon-placeholder--cross": true,
   });
   return (
-    <div className="toggle">
+    <label className={toggleClassname}>
       <span className="toggle__label">First Move</span>
-      <br />
       <i className={circleIconClassnames} />
-      <label className={knobPlaceholderClassnames}>
+      <span className={knobPlaceholderClassnames}>
         <span className={knobClassnames}></span>
         <input
           className="toggle__input"
@@ -47,9 +50,9 @@ const Toggle = ({ onToggleChanged, checked, disabled }) => {
           checked={checked}
           disabled={disabled}
         />
-      </label>
+      </span>
       <i className={crossIconClassnames} />
-    </div>
+    </label>
   );
 };
 

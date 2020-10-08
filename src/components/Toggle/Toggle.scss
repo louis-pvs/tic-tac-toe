@@ -3,13 +3,18 @@
 $toggle-size: 18px;
 
 .toggle {
-  float: left;
-  margin: 0.5rem;
   position: relative;
-  text-align: left;
   @extend %clearfix;
+  line-height: 40px;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.12s $animation-timing-function;
 }
 
+.toggle--disabled {
+  color: $placeholder-gray-darken;
+  cursor: not-allowed;
+}
 .toggle__knob-placeholder {
   background-color: $circle-green;
   border-radius: $toggle-size / 2;
@@ -32,6 +37,8 @@ $toggle-size: 18px;
   font-size: 0.8rem;
   font-weight: bold;
   text-transform: uppercase;
+  margin-right: 0.5rem;
+  color: inherit;
 }
 .toggle__input {
   @include a11y-visually-hidden();

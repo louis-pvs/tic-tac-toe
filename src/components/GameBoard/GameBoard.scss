@@ -67,3 +67,45 @@
 .gameboard__vertical-lines {
   transform: rotate(90deg);
 }
+.gameboard__controller-col {
+  float: left;
+  width: 50%;
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.gameboard__controller-col--right {
+  text-align: right;
+}
+.gameboard__btn {
+  background-color: transparent;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  min-height: 40px;
+  padding: 0 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:disabled {
+    color: $placeholder-gray-darken;
+    cursor: not-allowed;
+  }
+  &:focus {
+    border: 0;
+    outline: 0;
+    background-color: $placeholder-gray-darken;
+  }
+}
+
+.gameboard__icon {
+  vertical-align: middle;
+  font-size: 1rem;
+}
+
+.gameboard__btn-span {
+  margin: 0.5rem;
+  vertical-align: middle;
+}
