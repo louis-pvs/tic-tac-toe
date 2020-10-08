@@ -47,7 +47,6 @@ const Toggle = ({ onToggleChanged, checked, disabled }) => {
           className="toggle__input"
           type="checkbox"
           onChange={handleChange}
-          checked={checked}
           disabled={disabled}
         />
       </span>

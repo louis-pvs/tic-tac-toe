@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./GameBoard.scss";
+import cx from "classnames";
 import Tile from "../Tile";
 import Toggle from "../Toggle";
+import { getStrike } from "../../helpers/checkResult";
 
 const INITIAL_STATE = [
   [null, null, null],
@@ -14,21 +16,67 @@ const GameBoard = () => {
   const [firstPlayer, setFirstPlayer] = useState("o");
   const [stepCount, setStepCount] = useState(0);
   const [currentMark, setCurrentMark] = useState(firstPlayer);
+  const [strikeIndex, setStrikeIndex] = useState([]);
+  const [winner, setWinner] = useState(null);
+  const isTie = stepCount >= 9 && !winner;
   const flipCurrentMark = () => {
     setCurrentMark(currentMark === "x" ? "o" : "x");
   };
   const handleResetClick = () => {
     setStepCount(0);
     setResult([...INITIAL_STATE]);
+    setWinner(null);
+    setStrikeIndex([]);
   };
+  const handleTileChecked = (rowIndex, colIndex, value) => {
+    let newResult = [...result];
+    newResult[rowIndex] = [...result[rowIndex]];
+    newResult[rowIndex][colIndex] = value;
+    setResult(newResult);
+    setStrikeIndex(getStrike(newResult, currentMark));
+    setStepCount(stepCount + 1);
+  };
+
+  function renderMessage() {
+    const winnerIconClassnames = cx({
+      icon: true,
+      "gameboard__message-icon": true,
+      "icon--circle": winner === "o",
+      "icon--cross": winner === "x",
+      [`gameboard__message-icon--${winner}`]: !!winner,
+    });
+    if (isTie)
+      return (
+        <p className="gameboard__message">
+          <i className="icon icon--circle gameboard__message-icon gameboard__message-icon--o"></i>
+          <span className="gameboard__message-span">It is a tie</span>
+          <i className="icon icon--cross gameboard__message-icon gameboard__message-icon--x"></i>
+        </p>
+      );
+    else if (winner)
+      return (
+        <p className="gameboard__message">
+          <span className="gameboard__message-span">Winner is</span>
+          <i className={winnerIconClassnames} />
+        </p>
+      );
+    return " ";
+  }
+
   useEffect(() => {
     if (!stepCount) setCurrentMark(firstPlayer);
   }, [stepCount, firstPlayer]);
+
   useEffect(() => {
-    if (stepCount) flipCurrentMark();
-  }, [stepCount, result]);
+    if (strikeIndex.length) setWinner(currentMark);
+  }, [strikeIndex, currentMark]);
+
+  useEffect(() => {
+    if (stepCount && !strikeIndex.length) flipCurrentMark();
+  }, [stepCount, result, strikeIndex]);
   return (
     <>
+      {renderMessage()}
       <div className="gameboard__controller">
         <div className="gameboard__controller-col gameboard__controller-col--left">
           <Toggle
@@ -53,22 +101,21 @@ const GameBoard = () => {
           return (
             <div key={rowIndex} className="gameboard__row">
               {row.map((mark, colIndex) => {
-                const handleTileChecked = (value) => {
-                  let newResult = [...result];
-                  newResult[rowIndex] = [...result[rowIndex]];
-                  newResult[rowIndex][colIndex] = value;
-                  setResult(newResult);
-                  setStepCount(stepCount + 1);
-                };
+                const id = `${rowIndex}${colIndex}`;
+                const highlight = strikeIndex.indexOf(id) > -1;
                 return (
-                  <div key={colIndex} className="gameboard__col">
+                  <div key={id} className="gameboard__col">
                     <div className="gameboard__tile">
                       <fieldset className="gameboard__fieldset">
                         <Tile
-                          id={`${rowIndex}${colIndex}`}
+                          id={id}
                           selectedValue={mark}
+                          disabled={!!winner}
                           target={currentMark}
-                          onTileChecked={handleTileChecked}
+                          highlight={highlight}
+                          onTileChecked={(value) =>
+                            handleTileChecked(rowIndex, colIndex, value)
+                          }
                         />
                       </fieldset>
                     </div>

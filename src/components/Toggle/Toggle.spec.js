@@ -4,7 +4,7 @@ import Toggle from "./index";
 
 const CLASSNAMES = {
   input: "toggle__input",
-  knobPlaceholder: "toggle__knob-placeholder",
+  toggle: "toggle",
   crossIcon: "icon--cross",
   circleIcon: "icon--circle",
 };
@@ -17,65 +17,32 @@ describe("<Toggle />", () => {
     expect(checkbox).not.toBeUndefined();
   });
   it("should fire call back when toggle on click", () => {
-    const mockCacllback = jest.fn();
+    const mockCallback = jest.fn();
     const { container } = render(
-      <Toggle onToggleChanged={mockCacllback} checked={false} />
+      <Toggle onToggleChanged={mockCallback} checked={false} disabled={false} />
     );
-    const toggle = container.querySelector(`.${CLASSNAMES.knobPlaceholder}`);
+    const toggle = container.querySelector(`.${CLASSNAMES.toggle}`);
     const checkbox = container.querySelector(`.${CLASSNAMES.input}`);
     expect(checkbox.checked).toBeFalsy();
 
     fireEvent(toggle, new MouseEvent("click"));
-
-    expect(mockCacllback).toHaveBeenCalledTimes(1);
+    expect(mockCallback).toHaveBeenCalledTimes(1);
+    expect(checkbox.checked).toBeTruthy();
   });
   it("shouldn't able to interact when it is disabled", () => {
-    const mockCacllback = jest.fn();
+    const mockCallback = jest.fn();
     const { container } = render(
-      <Toggle onToggleChanged={mockCacllback} checked={false} disabled={true} />
+      <Toggle onToggleChanged={mockCallback} checked={false} disabled={true} />
     );
-    const toggle = container.querySelector(`.${CLASSNAMES.knobPlaceholder}`);
+    const toggle = container.querySelector(`.${CLASSNAMES.toggle}`);
     fireEvent(toggle, new MouseEvent("click"));
-    expect(mockCacllback).toHaveBeenCalledTimes(0);
+    expect(mockCallback).toHaveBeenCalledTimes(0);
   });
-  it("should show the correct label when it is uncheck", () => {
-    const { container } = render(<Toggle checked={false} />);
-    const circleIcon = container.querySelector(`.${CLASSNAMES.circleIcon}`);
-    const crossIcon = container.querySelector(`.${CLASSNAMES.crossIcon}`);
-    const toggle = container.querySelector(`.${CLASSNAMES.knobPlaceholder}`);
-
-    expect(
-      circleIcon.classList.contains("toggle__icon-placeholder--selected")
-    ).toBeTruthy();
-    expect(
-      crossIcon.classList.contains("toggle__icon-placeholder--selected")
-    ).toBeFalsy();
-    expect(
-      toggle.classList.contains("toggle__knob-placeholder--checked")
-    ).toBeFalsy();
-  });
-  it("should show the correct label when it is checked", () => {
-    const { container } = render(<Toggle checked={true} />);
-    const circleIcon = container.querySelector(`.${CLASSNAMES.circleIcon}`);
-    const crossIcon = container.querySelector(`.${CLASSNAMES.crossIcon}`);
-    const toggle = container.querySelector(`.${CLASSNAMES.knobPlaceholder}`);
-
-    expect(
-      circleIcon.classList.contains("toggle__icon-placeholder--selected")
-    ).toBeFalsy();
-    expect(
-      crossIcon.classList.contains("toggle__icon-placeholder--selected")
-    ).toBeTruthy();
-    expect(
-      toggle.classList.contains("toggle__knob-placeholder--checked")
-    ).toBeTruthy();
-  });
-
   it("should show the correct label when it is disabled", () => {
     const { container } = render(<Toggle checked={false} disabled={true} />);
     const circleIcon = container.querySelector(`.${CLASSNAMES.circleIcon}`);
     const crossIcon = container.querySelector(`.${CLASSNAMES.crossIcon}`);
-    const toggle = container.querySelector(`.${CLASSNAMES.knobPlaceholder}`);
+    const toggle = container.querySelector(`.${CLASSNAMES.toggle}`);
 
     expect(
       circleIcon.classList.contains("toggle__icon-placeholder--disabled")
@@ -83,8 +50,6 @@ describe("<Toggle />", () => {
     expect(
       crossIcon.classList.contains("toggle__icon-placeholder--disabled")
     ).toBeTruthy();
-    expect(
-      toggle.classList.contains("toggle__knob-placeholder--disabled")
-    ).toBeTruthy();
+    expect(toggle.classList.contains("toggle--disabled")).toBeTruthy();
   });
 });

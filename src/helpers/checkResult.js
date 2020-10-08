@@ -11,10 +11,10 @@ export function rowStrike(board, markToBeCheck) {
       board[i][1] === markToBeCheck &&
       board[i][2] === markToBeCheck
     ) {
-      return true;
+      return [`${i}0`, `${i}1`, `${i}2`];
     }
   }
-  return false;
+  return [];
 }
 
 /**
@@ -30,10 +30,10 @@ export function columnStrike(board, markToBeCheck) {
       board[1][i] === markToBeCheck &&
       board[2][i] === markToBeCheck
     ) {
-      return true;
+      return [`0${i}`, `1${i}`, `2${i}`];
     }
   }
-  return false;
+  return [];
 }
 
 /**
@@ -48,14 +48,14 @@ export function diagonalStrike(board, markToBeCheck) {
     board[1][1] === markToBeCheck &&
     board[2][2] === markToBeCheck
   ) {
-    return true;
+    return ["00", "11", "22"];
   } else if (
     board[0][2] === markToBeCheck &&
     board[1][1] === markToBeCheck &&
     board[2][0] === markToBeCheck
   ) {
-    return true;
-  } else return false;
+    return ["02", "11", "20"];
+  } else return [];
 }
 
 /**
@@ -64,10 +64,12 @@ export function diagonalStrike(board, markToBeCheck) {
  * @param {""} markToBeCheck
  * @returns If any mark has strike in any direction from the board
  */
-export function gameOver(board, markingToBeCheck) {
-  return (
-    rowStrike(board, markingToBeCheck) ||
-    columnStrike(board, markingToBeCheck) ||
-    diagonalStrike(board, markingToBeCheck)
-  );
+export function getStrike(board, markingToBeCheck) {
+  let rowWinner = rowStrike(board, markingToBeCheck);
+  let columnWinner = columnStrike(board, markingToBeCheck);
+  let diagonalWinner = diagonalStrike(board, markingToBeCheck);
+  if (rowWinner.length) return rowWinner;
+  else if (columnWinner.length) return columnWinner;
+  else if (diagonalWinner.length) return diagonalWinner;
+  else return [];
 }

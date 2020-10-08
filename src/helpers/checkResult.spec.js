@@ -2,7 +2,7 @@ const {
   rowStrike,
   columnStrike,
   diagonalStrike,
-  gameOver,
+  getStrike,
 } = require("./checkResult");
 
 const boardWithRowStrike = [
@@ -21,82 +21,149 @@ const boardWithDiagonalStrike = [
   ["x", "o", null],
 ];
 const boardWithoutStrike = [
-  ['x', 'o', 'o'],
-  ['o', 'x', 'x'],
-  ['x', 'o', 'o']
+  ["x", "o", "o"],
+  ["o", "x", "x"],
+  ["x", "o", "o"],
 ];
 
 describe("`rowStrike()`", () => {
   it("should detect strike when it is row strike", () => {
-    expect(rowStrike(boardWithRowStrike, "o")).toBeTruthy();
+    expect(rowStrike(boardWithRowStrike, "o").length).toBe(3);
+    expect(rowStrike(boardWithRowStrike, "o")).toStrictEqual([
+      "00",
+      "01",
+      "02",
+    ]);
   });
   it("shouldn't detect strike when it is column strike", () => {
-    expect(rowStrike(boardWithColumnStrike, "o")).toBeFalsy();
+    expect(rowStrike(boardWithColumnStrike, "o").length).toBe(0);
+    expect(rowStrike(boardWithColumnStrike, "o")).not.toStrictEqual([
+      "00",
+      "10",
+      "20",
+    ]);
   });
   it("shouldn't detech strike when it is diagonal strike", () => {
-    expect(rowStrike(boardWithDiagonalStrike, "x")).toBeFalsy();
+    expect(rowStrike(boardWithDiagonalStrike, "x").length).toBe(0);
+    expect(rowStrike(boardWithDiagonalStrike, "x")).not.toStrictEqual([
+      "02",
+      "11",
+      "20",
+    ]);
   });
   it("shouldn't detech strike when it without any strike", () => {
-    expect(rowStrike(boardWithoutStrike, "o")).toBeFalsy();
-    expect(rowStrike(boardWithoutStrike, "x")).toBeFalsy();
+    expect(rowStrike(boardWithoutStrike, "o").length).toBe(0);
+    expect(rowStrike(boardWithoutStrike, "x")).toStrictEqual([]);
   });
   it("shouldn't detech strike with a wrong marking", () => {
-    expect(rowStrike(boardWithRowStrike, "x")).toBeFalsy();
+    expect(rowStrike(boardWithRowStrike, "x").length).toBe(0);
+    expect(rowStrike(boardWithRowStrike, "x")).not.toStrictEqual(
+      "00",
+      "01",
+      "02"
+    );
   });
 });
 
 describe("`columnStrike()`", () => {
   it("should detect strike when it is column strike", () => {
-    expect(columnStrike(boardWithColumnStrike, "o")).toBeTruthy();
+    expect(columnStrike(boardWithColumnStrike, "o").length).toBe(3);
+    expect(columnStrike(boardWithColumnStrike, "o")).toStrictEqual([
+      "00",
+      "10",
+      "20",
+    ]);
   });
   it("shouldn't detect strike when it is row strike", () => {
-    expect(columnStrike(boardWithRowStrike, "o")).toBeFalsy();
+    expect(columnStrike(boardWithRowStrike, "o").length).toBe(0);
+    expect(columnStrike(boardWithRowStrike, "o")).not.toStrictEqual([
+      "00",
+      "01",
+      "02",
+    ]);
   });
   it("shouldn't detech strike when it is diagonal strike", () => {
-    expect(columnStrike(boardWithDiagonalStrike, "x")).toBeFalsy();
+    expect(columnStrike(boardWithDiagonalStrike, "x").length).toBe(0);
+    expect(columnStrike(boardWithDiagonalStrike, "x")).not.toStrictEqual([
+      "02",
+      "11",
+      "20",
+    ]);
   });
   it("shouldn't detech strike when it without any strike", () => {
-    expect(columnStrike(boardWithoutStrike, "o")).toBeFalsy();
-    expect(columnStrike(boardWithoutStrike, "x")).toBeFalsy();
+    expect(columnStrike(boardWithoutStrike, "o").length).toBe(0);
+    expect(columnStrike(boardWithoutStrike, "x").length).toBe(0);
   });
   it("shouldn't detech strike with a wrong marking", () => {
-    expect(columnStrike(boardWithColumnStrike, "x")).toBeFalsy();
+    expect(columnStrike(boardWithColumnStrike, "x").length).toBe(0);
+    expect(columnStrike(boardWithColumnStrike, "x")).not.toStrictEqual([
+      "00",
+      "10",
+      "20",
+    ]);
   });
 });
-
 
 describe("`diagonalStrike()`", () => {
   it("should detect strike when it is column strike", () => {
-    expect(diagonalStrike(boardWithDiagonalStrike, "x")).toBeTruthy();
+    expect(diagonalStrike(boardWithDiagonalStrike, "x").length).toBe(3);
+    expect(diagonalStrike(boardWithDiagonalStrike, "x")).toStrictEqual([
+      "02",
+      "11",
+      "20",
+    ]);
   });
   it("shouldn't detect strike when it is row strike", () => {
-    expect(diagonalStrike(boardWithRowStrike, "o")).toBeFalsy();
+    expect(diagonalStrike(boardWithRowStrike, "o").length).toBe(0);
+    expect(diagonalStrike(boardWithRowStrike, "o").length).not.toStrictEqual([
+      "00",
+      "01",
+      "02",
+    ]);
   });
   it("shouldn't detech strike when it is column strike", () => {
-    expect(diagonalStrike(boardWithColumnStrike, "o")).toBeFalsy();
+    expect(diagonalStrike(boardWithColumnStrike, "o").length).toBe(0);
+    expect(diagonalStrike(boardWithColumnStrike, "o")).not.toStrictEqual([
+      "00",
+      "10",
+      "20",
+    ]);
   });
   it("shouldn't detech strike when it without any strike", () => {
-    expect(diagonalStrike(boardWithoutStrike, "o")).toBeFalsy();
-    expect(diagonalStrike(boardWithoutStrike, "x")).toBeFalsy();
+    expect(diagonalStrike(boardWithoutStrike, "o").length).toBe(0);
+    expect(diagonalStrike(boardWithoutStrike, "x").length).toBe(0);
   });
   it("shouldn't detech strike with a wrong marking", () => {
-    expect(diagonalStrike(boardWithDiagonalStrike, "o")).toBeFalsy();
+    expect(diagonalStrike(boardWithDiagonalStrike, "o").length).toBe(0);
+    expect(diagonalStrike(boardWithDiagonalStrike, "o")).not.toStrictEqual([
+      "02",
+      "11",
+      "20",
+    ]);
   });
 });
 
-describe("`gameOver()`", () => {
+describe("`getStrike()`", () => {
   it("should detech strike when it is strike in any direction", () => {
-    expect(gameOver(boardWithRowStrike, "o")).toBeTruthy();
-    expect(gameOver(boardWithColumnStrike, "o")).toBeTruthy();
-    expect(gameOver(boardWithDiagonalStrike, "x")).toBeTruthy();
-  })
+    expect(getStrike(boardWithRowStrike, "o")).toStrictEqual(["00", "01", "02"]);
+    expect(getStrike(boardWithColumnStrike, "o")).toStrictEqual([
+      "00",
+      "10",
+      "20",
+    ]);
+    expect(getStrike(boardWithDiagonalStrike, "x")).toStrictEqual([
+      "02",
+      "11",
+      "20",
+    ]);
+  });
   it("shouldn't detech strike when it without any strike", () => {
-    expect(gameOver(boardWithoutStrike, "o")).toBeFalsy();
-    expect(gameOver(boardWithoutStrike, "x")).toBeFalsy();
-  })
+    expect(getStrike(boardWithoutStrike, "o")).toStrictEqual([]);
+    expect(getStrike(boardWithoutStrike, "x")).toStrictEqual([]);
+  });
   it("shouldn't detech strike with a wrong marking", () => {
-    expect(gameOver(boardWithRowStrike, "x")).toBeFalsy();
-    expect(gameOver(boardWithColumnStrike, "x")).toBeFalsy();
-    expect(gameOver(boardWithDiagonalStrike, "o")).toBeFalsy();
-  })
-})
+    expect(getStrike(boardWithRowStrike, "x")).toStrictEqual([]);
+    expect(getStrike(boardWithColumnStrike, "x")).toStrictEqual([]);
+    expect(getStrike(boardWithDiagonalStrike, "o")).toStrictEqual([]);
+  });
+});
