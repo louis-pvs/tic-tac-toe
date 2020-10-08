@@ -1,6 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const PATHS = {
   dist: path.resolve(__dirname, "dist"),
@@ -61,6 +62,14 @@ module.exports = (env = { NODE_ENV: "production" }) => {
       }),
       new MiniCssExtractPlugin({
         filename: "[name].css",
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.join(PATHS.contentBase, "/fonts"),
+            to: path.join(PATHS.dist, "/fonts"),
+          },
+        ],
       }),
     ],
   };
