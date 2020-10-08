@@ -12,13 +12,14 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
   <div
     className="app__game-board"
   >
+     
     <div
       className="gameboard__controller"
     >
       <div
         className="gameboard__controller-col gameboard__controller-col--left"
       >
-        <div
+        <label
           className="toggle"
         >
           <span
@@ -26,34 +27,33 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
           >
             First Move
           </span>
-          <br />
           <i
             className="icon icon--circle toggle__icon-placeholder toggle__icon-placeholder--selected toggle__icon-placeholder--circle"
           />
-          <label
+          <span
             className="toggle__knob-placeholder"
           >
             <span
               className="toggle__knob"
             />
             <input
-              checked={false}
               className="toggle__input"
               disabled={false}
               onChange={[Function]}
               type="checkbox"
             />
-          </label>
+          </span>
           <i
             className="icon icon--cross toggle__icon-placeholder toggle__icon-placeholder--cross"
           />
-        </div>
+        </label>
       </div>
       <div
         className="gameboard__controller-col gameboard__controller-col--right"
       >
         <button
           className="gameboard__btn"
+          disabled={true}
           onClick={[Function]}
         >
           <i

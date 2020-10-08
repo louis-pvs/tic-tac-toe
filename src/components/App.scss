@@ -20,13 +20,18 @@ body {
   text-align: center;
 }
 .app__title {
+  font-family: "Passion One", sans-serif;
   font-weight: 700;
   font-size: 36px;
   line-height: 1;
+  margin: 1rem auto;
+  display: inline-block;
+  width: auto;
 }
 .app__game-board {
   width: 500px;
   max-width: 90%;
   margin: 0 auto;
+  position: relative;
   @extend %clearfix;
 }

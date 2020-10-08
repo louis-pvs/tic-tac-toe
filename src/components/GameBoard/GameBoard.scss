@@ -37,35 +37,49 @@
 }
 .gameboard__vertical-lines,
 .gameboard__horizontal-lines {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   display: inline-block;
-  left: 0;
-  top: 0;
+  overflow: visible;
   z-index: 0;
 
   &::before,
   &::after {
-    background-color: $placeholder-gray;
+    background-color: $placeholder-gray-darken;
     content: "";
     height: 4px;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -2px);
     width: 90%;
+    z-index: 3;
   }
-
+}
+.gameboard__horizontal-lines {
   &::before {
     top: 33.33%;
   }
   &::after {
-    top: 66.66%;
+    bottom: 33.33%;
   }
 }
 
 .gameboard__vertical-lines {
-  transform: rotate(90deg);
+  &::before {
+    left: 33.33%;
+  }
+  &::after {
+    left: 66.66%;
+  }
+  &::before,
+  &::after {
+    top: 50%;
+    transform: translate(-50%, -2px) rotate(90deg);
+  }
+}
+.gameboard__controller {
+  display: inline-block;
+  margin-top: 2rem;
+  width: 100%;
+  @extend %clearfix;
 }
 .gameboard__controller-col {
   float: left;
@@ -106,6 +120,35 @@
 }
 
 .gameboard__btn-span {
+  margin: 0.5rem;
+  vertical-align: middle;
+}
+
+.gameboard__message {
+  font-family: "Passion One", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1;
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.gameboard__message-icon {
+  font-size: 1.5em;
+  vertical-align: middle;
+  font-weight: bold;
+}
+.gameboard__message-icon--o {
+  color: $circle-green;
+}
+.gameboard__message-icon--x {
+  color: $cross-red;
+}
+
+.gameboard__message-span {
   margin: 0.5rem;
   vertical-align: middle;
 }

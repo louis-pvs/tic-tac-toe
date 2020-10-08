@@ -49,14 +49,14 @@ const GameBoard = () => {
       return (
         <p className="gameboard__message">
           <i className="icon icon--circle gameboard__message-icon gameboard__message-icon--o"></i>
-          <span className="gameboard__message-span">It is a tie</span>
+          <span className="gameboard__message-span">Game Over, and it is a tie</span>
           <i className="icon icon--cross gameboard__message-icon gameboard__message-icon--x"></i>
         </p>
       );
     else if (winner)
       return (
         <p className="gameboard__message">
-          <span className="gameboard__message-span">Winner is</span>
+          <span className="gameboard__message-span">Game Over, Winner is</span>
           <i className={winnerIconClassnames} />
         </p>
       );
