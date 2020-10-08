@@ -1,3 +1,5 @@
+![Demo Visual](https://github.com/louis-pvs/tic-tac-toe/blob/master/public/tic-tac-toe-visual.gif)
+
 ## Setup and Installation
 Before starting or building the project, please make sure your machine have NodeJS installed. Run `npm install` or `yarn` to install project dependencies.
 
@@ -6,6 +8,9 @@ Run `npm run build` or `yarn build` to have production codes in `/dist` folder.
 
 ## Development
 Run `npm start` or `yarn start` to start development environment in your browser, by default your browser should open new tab with URL: http://localhost:8080/
+
+## Test
+Run `npm test` or `yarn test` to run test
 
 ## Rules
 1. Before game start, choose either **`O`** or **`X`** who go first
@@ -59,3 +64,9 @@ A: To control what styling is being compile into final bundle, by importing rela
 import "Demo.scss";
 ```
 Because `Demo.scss` is refrence by `Demo.jsx`, when `Demo.jsx` is removed from the project, styling within `Demo.scss` will be dismiss along with the reference file. (And ofcourse `Demo.scss` should only contains what's relate to `Demo.jsx`, component base approach.)
+
+### Q: Why choose `@testing-library/react`?
+A: `@testing-library/react` provide very similiar API with browser to do DOM manipulation, for example `.querySelector()`, `new MouseEvent()`. All these familiar API give other developers easy to pick up this library if they are already familiar with browser API.
+
+### Q: What is all the `__` and `--` in CSS classnames?
+A: They are naming convention call [BEM](http://getbem.com/naming/), one of the solution to avoid css naming from poluting each other when project grows large. 
