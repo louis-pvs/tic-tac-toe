@@ -53,18 +53,11 @@
 .tile__placeholder--o-selected {
   animation: checked 0.25s $animation-timing-function both;
   color: $circle-green;
-  text-shadow: 0 1px $circle-green-darken, 0 2px $circle-green-darken,
-    0 3px $circle-green-darken, 0 4px $circle-green-darken,
-    0 5px $circle-green-darken, 0 6px $circle-green-darken,
-    0 7px $circle-green-darken, 0 8px $circle-green-darken,
-    0 20px rgba(0, 0, 0, 0.1);
+  text-shadow: $green-shadow;
 }
 
 .tile__placeholder--x-selected {
   animation: checked 0.25s $animation-timing-function both;
   color: $cross-red;
-  text-shadow: 0 1px $cross-red-darken, 0 2px $cross-red-darken,
-    0 3px $cross-red-darken, 0 4px $cross-red-darken, 0 5px $cross-red-darken,
-    0 6px $cross-red-darken, 0 7px $cross-red-darken, 0 8px $cross-red-darken,
-    0 20px rgba(0, 0, 0, 0.1);
+  text-shadow: $red-shadow;
 }

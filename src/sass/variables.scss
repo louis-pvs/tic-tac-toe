@@ -11,7 +11,16 @@ $circle-green-darken: #2b8a3e;
 $cross-red-lighten: #ffe3e3;
 $cross-red: #fa5252;
 $cross-red-darken: #c92a2a;
-$animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+$green-shadow: 0 1px $circle-green-darken, 0 2px $circle-green-darken,
+  0 3px $circle-green-darken, 0 4px $circle-green-darken,
+  0 5px $circle-green-darken, 0 6px $circle-green-darken,
+  0 7px $circle-green-darken, 0 8px $circle-green-darken,
+  0 20px rgba(0, 0, 0, 0.1);
+$red-shadow: 0 1px $cross-red-darken, 0 2px $cross-red-darken,
+  0 3px $cross-red-darken, 0 4px $cross-red-darken, 0 5px $cross-red-darken,
+  0 6px $cross-red-darken, 0 7px $cross-red-darken, 0 8px $cross-red-darken,
+  0 20px rgba(0, 0, 0, 0.1);
 
 @import "./mixins.scss";
 @import "./icon-font.scss";
