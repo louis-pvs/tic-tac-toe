@@ -12,7 +12,6 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
   <div
     className="app__game-board"
   >
-     
     <div
       className="gameboard__controller"
     >

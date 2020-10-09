@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { curry } from "lodash";
 import "./GameBoard.scss";
 import cx from "classnames";
 import Tile from "../Tile";
 import Toggle from "../Toggle";
+import StrikeLine from "../StrikeLine";
 import renderConfetti from "../../helpers/renderConfetti";
 import { getStrike } from "../../helpers/checkResult";
 
@@ -19,60 +21,39 @@ const GameBoard = () => {
   const [currentMark, setCurrentMark] = useState(firstPlayer);
   const [strikeIndex, setStrikeIndex] = useState([]);
   const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    if (!stepCount) setCurrentMark(firstPlayer);
+  }, [stepCount, firstPlayer]);
+
+  useEffect(() => {
+    if (strikeIndex.length) {
+      setWinner(currentMark);
+      renderConfetti();
+    }
+  }, [strikeIndex, currentMark]);
+
+  useEffect(() => {
+    if (stepCount && !strikeIndex.length) flipCurrentMark();
+  }, [stepCount, result, strikeIndex]);
+
   const isTie = stepCount >= 9 && !winner;
-  const flipCurrentMark = () => {
-    setCurrentMark(currentMark === "x" ? "o" : "x");
-  };
+  const flipCurrentMark = () => setCurrentMark(currentMark === "x" ? "o" : "x");
+
   const handleResetClick = () => {
     setStepCount(0);
     setResult([...INITIAL_STATE]);
     setWinner(null);
     setStrikeIndex([]);
   };
-  const handleTileChecked = (rowIndex, colIndex, value) => {
+  const handleTileCheckInRow = curry((rowIndex, colIndex, value) => {
     let newResult = [...result];
     newResult[rowIndex] = [...result[rowIndex]];
     newResult[rowIndex][colIndex] = value;
     setResult(newResult);
     setStrikeIndex(getStrike(newResult, currentMark));
     setStepCount(stepCount + 1);
-  };
-
-  function renderStrikeLine() {
-    if (!winner) return null;
-    let top = "50%";
-    let left = "50%";
-    let transform = "translate(-50%, -50%)";
-
-    const [indexOne, indexTwo, indexThree] = strikeIndex;
-    const isRow = indexOne[0] === indexTwo[0] && indexTwo[0] === indexThree[0];
-    const isColumn =
-      indexOne[1] === indexTwo[1] && indexTwo[1] === indexThree[1];
-    const isDiagonal =
-      (indexOne[0] === indexThree[1] && indexTwo === "11") ||
-      (indexOne[0] === indexOne[1] &&
-        indexThree[0] === indexThree[1] &&
-        indexTwo === "11");
-
-    if (isRow) {
-      top = `${(100 / 3) * indexOne[0] + 100 / 6}%`;
-    } else if (isColumn) {
-      left = `${(100 / 3) * indexOne[1] + 100 / 6}%`;
-      transform = "translate(-50%, 0) rotate(-90deg)";
-    } else if (isDiagonal) {
-      transform = `translate(-50%, -50%) rotate(${
-        indexOne[1] === "0" ? "45" : "-45"
-      }deg) scaleX(1.4)`;
-    }
-
-    const lineClassnames = cx({
-      "gameboard__strike-line": true,
-      [`gameboard__strike-line--${winner}`]: !!winner,
-    });
-    const styles = { top, left, transform };
-    renderConfetti();
-    return <div className={lineClassnames} style={styles}></div>;
-  }
+  });
 
   function renderMessage() {
     const winnerIconClassnames = cx({
@@ -99,20 +80,9 @@ const GameBoard = () => {
           <i className={winnerIconClassnames} />
         </p>
       );
-    return " ";
+    return null;
   }
 
-  useEffect(() => {
-    if (!stepCount) setCurrentMark(firstPlayer);
-  }, [stepCount, firstPlayer]);
-
-  useEffect(() => {
-    if (strikeIndex.length) setWinner(currentMark);
-  }, [strikeIndex, currentMark]);
-
-  useEffect(() => {
-    if (stepCount && !strikeIndex.length) flipCurrentMark();
-  }, [stepCount, result, strikeIndex]);
   return (
     <>
       {renderMessage()}
@@ -137,9 +107,11 @@ const GameBoard = () => {
       </div>
       <div className="gameboard">
         {result.map((row, rowIndex) => {
+          const handleTileCheckInCol = handleTileCheckInRow(rowIndex);
           return (
             <div key={rowIndex} className="gameboard__row">
               {row.map((mark, colIndex) => {
+                const handleTileChecked = handleTileCheckInCol(colIndex);
                 const id = `${rowIndex}${colIndex}`;
                 const highlight = strikeIndex.indexOf(id) > -1;
                 return (
@@ -152,9 +124,7 @@ const GameBoard = () => {
                           disabled={!!winner}
                           target={currentMark}
                           highlight={highlight}
-                          onTileChecked={(value) =>
-                            handleTileChecked(rowIndex, colIndex, value)
-                          }
+                          onTileChecked={handleTileChecked}
                         />
                       </fieldset>
                     </div>
@@ -166,7 +136,7 @@ const GameBoard = () => {
         })}
         <div className="gameboard__horizontal-lines"></div>
         <div className="gameboard__vertical-lines"></div>
-        {renderStrikeLine()}
+        {winner && <StrikeLine strikeIndex={strikeIndex} mark={winner} />}
       </div>
     </>
   );

@@ -85,22 +85,6 @@
   }
 }
 
-.gameboard__strike-line {
-  position: absolute;
-  display: inline-block;
-  height: 4px;
-  animation: striking 0.12s $animation-timing-function forwards;
-  z-index: 6;
-}
-.gameboard__strike-line--o {
-  background-color: $circle-green;
-  box-shadow: $green-shadow;
-}
-.gameboard__strike-line--x {
-  background-color: $cross-red;
-  box-shadow: $red-shadow;
-}
-
 .gameboard__controller {
   display: inline-block;
   margin-top: 2rem;

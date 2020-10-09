@@ -1,0 +1,17 @@
+@import "sass/setup";
+
+.strike-line {
+  position: absolute;
+  display: inline-block;
+  height: 4px;
+  animation: striking 0.12s $animation-timing-function forwards;
+  z-index: 6;
+}
+.strike-line--o {
+  background-color: $circle-green;
+  box-shadow: $green-shadow;
+}
+.strike-line--x {
+  background-color: $cross-red;
+  box-shadow: $red-shadow;
+}
