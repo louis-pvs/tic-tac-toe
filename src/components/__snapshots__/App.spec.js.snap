@@ -12,6 +12,16 @@ exports[`<App /> Should render correctly compare with snapshot 1`] = `
   <div
     className="app__game-board"
   >
+    <p
+      className="message"
+    >
+      <span
+        className="message__span"
+      />
+      <i
+        className="icon gameboard__message-icon"
+      />
+    </p>
     <div
       className="gameboard__controller"
     >

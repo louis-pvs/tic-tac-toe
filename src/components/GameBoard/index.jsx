@@ -5,6 +5,7 @@ import cx from "classnames";
 import Tile from "../Tile";
 import Toggle from "../Toggle";
 import StrikeLine from "../StrikeLine";
+import Message from "../Message";
 import renderConfetti from "../../helpers/renderConfetti";
 import { getStrike } from "../../helpers/checkResult";
 
@@ -54,38 +55,28 @@ const GameBoard = () => {
     setStrikeIndex(getStrike(newResult, currentMark));
     setStepCount(stepCount + 1);
   });
-
-  function renderMessage() {
-    const winnerIconClassnames = cx({
+  function getMessage() {
+    if (isTie) return "Tie Game";
+    else if (winner) return "Game over, Winner is";
+    return null;
+  }
+  function renderIcon() {
+    const iconMap = {
+      o: "circle",
+      x: "cross",
+    };
+    const iconClassnames = cx({
       icon: true,
       "gameboard__message-icon": true,
-      "icon--circle": winner === "o",
-      "icon--cross": winner === "x",
+      [`icon--${iconMap[winner]}`]: !!winner,
       [`gameboard__message-icon--${winner}`]: !!winner,
     });
-    if (isTie)
-      return (
-        <p className="gameboard__message">
-          <i className="icon icon--circle gameboard__message-icon gameboard__message-icon--o"></i>
-          <span className="gameboard__message-span">
-            Game Over, and it is a tie
-          </span>
-          <i className="icon icon--cross gameboard__message-icon gameboard__message-icon--x"></i>
-        </p>
-      );
-    else if (winner)
-      return (
-        <p className="gameboard__message">
-          <span className="gameboard__message-span">Game Over, Winner is</span>
-          <i className={winnerIconClassnames} />
-        </p>
-      );
-    return null;
+    return <i className={iconClassnames} />;
   }
 
   return (
     <>
-      {renderMessage()}
+      <Message message={getMessage()} renderAfterMessage={renderIcon} />
       <div className="gameboard__controller">
         <div className="gameboard__controller-col gameboard__controller-col--left">
           <Toggle
