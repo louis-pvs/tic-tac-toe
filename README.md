@@ -1,3 +1,6 @@
+## Demo
+[Live Demo](https://louis-pvs.github.io/tic-tac-toe/)
+
 ![Demo Visual](https://github.com/louis-pvs/tic-tac-toe/blob/master/public/tic-tac-toe-visual.gif)
 
 ## Setup and Installation
@@ -70,3 +73,10 @@ A: `@testing-library/react` provide very similiar API with browser to do DOM man
 
 ### Q: What is all the `__` and `--` in CSS classnames?
 A: They are naming convention call [BEM](http://getbem.com/naming/), one of the solution to avoid css naming from poluting each other when project grows large. 
+
+## Credits
+Special thanks to open source below:
+- [Google Font](https://fonts.google.com/)
+- [Open Color](https://yeun.github.io/open-color/)
+- [canvas-confetti](https://www.kirilv.com/canvas-confetti/)
+- [iconmoon](https://icomoon.io/)
