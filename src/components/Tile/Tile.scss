@@ -39,7 +39,7 @@
 
 .tile__placeholder {
   position: absolute;
-  font-size: 100px;
+  font-size: 4rem;
   color: $placeholder-gray;
   display: inline-block;
   top: 50%;
@@ -60,4 +60,10 @@
   animation: checked 0.25s $animation-timing-function both;
   color: $cross-red;
   text-shadow: $red-shadow;
+}
+
+@media screen and (min-width: $break-point) {
+  .tile__placeholder {
+    font-size: 6rem;
+  }
 }

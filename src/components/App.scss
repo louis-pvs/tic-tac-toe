@@ -2,7 +2,7 @@
 @import "sass/setup";
 
 html {
-  font-size: $base-font-size;
+  font-size: 14px;
   color: $default-black;
   font-family: "Helvetica", sans-serif;
 }
@@ -34,4 +34,40 @@ body {
   margin: 0 auto;
   position: relative;
   @extend %clearfix;
+}
+
+.app__paragraph {
+  font-size: 0.85rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.app__anchor {
+  color: inherit;
+
+  &:visited,
+  &:focus {
+    color: inherit;
+  }
+}
+.app__anchor--no-deco {
+  text-decoration: none;
+  &:hover,
+  &:visited,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.app__icon {
+  font-size: 1.5em;
+  text-decoration: none;
+  vertical-align: middle;
+  margin-left: 0.25rem;
+}
+
+@media screen and (min-width: $break-point) {
+  html {
+    font-size: $base-font-size;
+  }
 }

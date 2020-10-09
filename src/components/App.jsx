@@ -10,11 +10,6 @@ const App = () => {
       <div className="app__game-board">
         <GameBoard />
       </div>
-      <footer>
-        <p className="app__author">
-          Created by <strong>Louis Phang</strong>
-        </p>
-      </footer>
     </div>
   );
 };

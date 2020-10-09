@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 const PATHS = {
-  dist: path.resolve(__dirname, "dist"),
+  dist: path.resolve(__dirname, "docs"),
   contentBase: path.resolve(__dirname, "public"),
   sass: path.resolve(__dirname, "src/sass"),
 };
@@ -22,7 +22,7 @@ module.exports = (env = { NODE_ENV: "production" }) => {
     output: {
       path: PATHS.dist,
       filename: "[name].js",
-      publicPath: "/",
+      publicPath: isDev ? "/" : "./",
     },
     module: {
       rules: [
@@ -57,6 +57,14 @@ module.exports = (env = { NODE_ENV: "production" }) => {
     plugins: [
       new HtmlWebpackPlugin({
         title: "Tic Tac Toe",
+        author: {
+          name: "Louis Phang",
+          ghUrl: "https://github.com/louis-pvs",
+          ghUser: "@louis-pvs",
+        },
+        project: {
+          url: "https://github.com/louis-pvs/tic-tac-toe",
+        },
         minify: !isDev,
         template: path.join(PATHS.contentBase, "index.html"),
       }),

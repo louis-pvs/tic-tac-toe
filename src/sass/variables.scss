@@ -21,6 +21,7 @@ $red-shadow: 0 1px $cross-red-darken, 0 2px $cross-red-darken,
   0 3px $cross-red-darken, 0 4px $cross-red-darken, 0 5px $cross-red-darken,
   0 6px $cross-red-darken, 0 7px $cross-red-darken, 0 8px $cross-red-darken,
   0 20px rgba(0, 0, 0, 0.1);
+$break-point: 420px;
 
 @import "./mixins.scss";
 @import "./icon-font.scss";

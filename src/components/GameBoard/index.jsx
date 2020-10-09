@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { curry } from "lodash";
+import { curry, cloneDeep } from "lodash";
 import "./GameBoard.scss";
 import cx from "classnames";
 import Tile from "../Tile";
@@ -48,8 +48,7 @@ const GameBoard = () => {
     setStrikeIndex([]);
   };
   const handleTileCheckInRow = curry((rowIndex, colIndex, value) => {
-    let newResult = [...result];
-    newResult[rowIndex] = [...result[rowIndex]];
+    let newResult = cloneDeep(result);
     newResult[rowIndex][colIndex] = value;
     setResult(newResult);
     setStrikeIndex(getStrike(newResult, currentMark));

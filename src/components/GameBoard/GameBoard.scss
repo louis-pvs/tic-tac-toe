@@ -93,14 +93,10 @@
 }
 .gameboard__controller-col {
   float: left;
-  width: 50%;
-  text-align: left;
+  width: 100%;
   vertical-align: bottom;
   padding: 0.5rem;
   box-sizing: border-box;
-}
-.gameboard__controller-col--right {
-  text-align: right;
 }
 .gameboard__btn {
   background-color: transparent;
@@ -144,4 +140,17 @@
 }
 .gameboard__message-icon--x {
   color: $cross-red;
+}
+
+@media screen and (min-width: $break-point) {
+  .gameboard__controller-col {
+    width: 50%;
+    padding: 0.5rem;
+  }
+  .gameboard__controller-col--left {
+    text-align: left;
+  }
+  .gameboard__controller-col--right {
+    text-align: right;
+  }
 }
